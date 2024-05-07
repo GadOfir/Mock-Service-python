@@ -1,22 +1,11 @@
 from flask import Flask, jsonify
+import json
 
 app = Flask(__name__)
 
-# Mock data with different data types
-users = [
-    {
-        "id": 1,
-        "name": "Alice",
-        "email": "alice@example.com",
-        "birthdate": "1990-05-15"
-    },
-    {
-        "id": 2,
-        "name": "Bob",
-        "email": "bob@example.com",
-        "birthdate": "1985-10-20"
-    }
-]
+# Load user data from external JSON file
+with open('users.json', 'r') as file:
+    users = json.load(file)
 
 # Endpoint to get all users
 @app.route('/users', methods=['GET'])
